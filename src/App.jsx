@@ -119,10 +119,18 @@ export default function Game() {
 
     const currentSquares = history[history.length - 1];
 
+    function handlePlay(nextSquares) {
+        // TODO
+    }
+
     return (
         <div className="game">
             <div className="game-board">
-                <Board />
+                <Board
+                    xIsNext={xIsNext}
+                    squares={currentSquares}
+                    onPlay={handlePlay}
+                />
             </div>
             <div className="game-info">
                 <ol>{/*TODO*/}</ol>
