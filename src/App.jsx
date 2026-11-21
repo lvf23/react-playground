@@ -128,7 +128,6 @@ export default function Game() {
         setCurrentMove(nextMove);
     }
 
-
     // TODO: 5. Display the location for each move in the format (row, col) in the move history list.
     const moves = history.map((squares, move) => {
         let description;
@@ -142,7 +141,11 @@ export default function Game() {
         // TODO: 1. For the current move only, show “You are at move #…” instead of a button.
         return (
             <li key={move}>
-                <button onClick={() => jumpTo(move)}>{description}</button>
+                {move === currentMove ? (
+                    `You are at move #${move}`
+                ) : (
+                    <button onClick={() => jumpTo(move)}>{description}</button>
+                )}
             </li>
         );
     });
