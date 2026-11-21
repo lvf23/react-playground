@@ -96,6 +96,7 @@ function calculateWinner(squares) {
 export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)]);
     const [currentMove, setCurrentMove] = useState(0);
+    const [isAscending, setIsAscending] = useState(true);
 
     const xIsNext = currentMove % 2 === 0;
     const currentSquares = history[currentMove];
@@ -131,7 +132,10 @@ export default function Game() {
         );
     });
 
-    // TODO: 3. Add a toggle button that lets you sort the moves in either ascending or descending order.
+    if (!isAscending) {
+        moves.reverse();
+    }
+
     return (
         <div className="game">
             <div className="game-board">
@@ -142,6 +146,9 @@ export default function Game() {
                 />
             </div>
             <div className="game-info">
+                <button onClick={() => setIsAscending(!isAscending)}>
+                    Sort {isAscending ? "descending" : "ascending"}
+                </button>
                 <ol>{moves}</ol>
             </div>
         </div>
