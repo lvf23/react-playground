@@ -31,7 +31,6 @@ function Board({ xIsNext, squares, onPlay }) {
 
     let status;
 
-    // TODO: 4. When someone wins, highlight the three squares that caused the win (and when no one wins, display a message about the result being a draw).
     if (winner) {
         status = "Winner: " + winner.player;
     } else if (squares.every((squareValue) => squareValue !== null)) {
