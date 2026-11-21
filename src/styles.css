@@ -88,3 +88,15 @@ body {
 .game-info {
     margin-left: 20px;
 }
+
+.square {
+    transition: background-color 1s ease;
+}
+
+.square.current {
+    background-color: rgb(224, 234, 163);
+}
+
+.square.winner {
+    background-color: rgb(120, 217, 180);
+}

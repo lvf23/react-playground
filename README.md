@@ -1,16 +1,66 @@
-# React + Vite
+# React Playground
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project implements the tic-tac-toe game from the React tutorial, built with React and Vite. It serves as a hands-on playground for learning React concepts through the game.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Alternating turns between players X and O.
+- Win and draw detection.
+- Highlights the winning line and the selected move.
+- Navigable move history showing each move’s player and position.
+- Sorts the move history in ascending or descending order.
 
-## React Compiler
+> Positions use zero-based indices: the top-left square is `(0, 0)`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Requirements
 
-## Expanding the ESLint configuration
+- Node.js
+- npm
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting started
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Vite will show the local URL to open in your browser.
+
+## Available commands
+
+| Command           | Description                                               |
+| ----------------- | --------------------------------------------------------- |
+| `npm run dev`     | Starts the development server.                            |
+| `npm run build`   | Creates a production build in `dist/`.                    |
+| `npm run preview` | Previews the production build. Run `npm run build` first. |
+| `npm run lint`    | Runs ESLint.                                              |
+| `npm run format`  | Formats files with Prettier.                              |
+
+## Main project files
+
+- `src/App.jsx`: game components, rules, and move history.
+- `src/styles.css`: board styles and highlights.
+- `src/main.jsx`: initializes the React application.
+- `index.html`: HTML page that loads the application.
+
+## Technologies
+
+- React
+- Vite
+- JavaScript
+- CSS
+
+## Changelog and Versioning
+
+This project uses [SemVer](https://semver.org) for versioning. For the versions available, see the [CHANGELOG.md](./CHANGELOG.md).
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
