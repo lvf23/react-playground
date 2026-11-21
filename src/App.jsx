@@ -24,7 +24,7 @@ function Board({ xIsNext, squares, onPlay }) {
             nextSquares[i] = "O";
         }
 
-        onPlay(nextSquares, row, col);
+        onPlay(nextSquares, row, col, nextSquares[i]);
     }
 
     const winner = calculateWinner(squares);
@@ -116,10 +116,10 @@ export default function Game() {
     const xIsNext = currentMove % 2 === 0;
     const currentSquares = history[currentMove] && history[currentMove].squares;
 
-    function handlePlay(nextSquares, row, col) {
+    function handlePlay(nextSquares, row, col, player) {
         const nextHistory = [
             ...history.slice(0, currentMove + 1),
-            { squares: nextSquares, row, col },
+            { squares: nextSquares, row, col, player },
         ];
         setHistory(nextHistory);
         setCurrentMove(nextHistory.length - 1);
@@ -136,7 +136,7 @@ export default function Game() {
             description =
                 "Go to move #" +
                 move +
-                ` (${historyItem.row}, ${historyItem.col})`;
+                ` (${historyItem.row}, ${historyItem.col}) ${historyItem.player}`;
         } else {
             description = "Go to game start";
         }
@@ -144,7 +144,7 @@ export default function Game() {
         return (
             <li key={move}>
                 {move && move === currentMove ? (
-                    `You are at move #${move} (${historyItem.row}, ${historyItem.col})`
+                    `You are at move #${move} (${historyItem.row}, ${historyItem.col}) ${historyItem.player}`
                 ) : (
                     <button onClick={() => jumpTo(move)}>{description}</button>
                 )}
