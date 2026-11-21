@@ -29,12 +29,14 @@ function Board({ xIsNext, squares, onPlay }) {
 
     let status;
 
+    // TODO: 4. When someone wins, highlight the three squares that caused the win (and when no one wins, display a message about the result being a draw).
     if (winner) {
         status = "Winner: " + winner;
     } else {
         status = "Next player: " + (xIsNext ? "X" : "O");
     }
 
+    // TODO: 2. Rewrite Board to use two loops to make the squares instead of hardcoding them.
     return (
         <>
             <div className="status">{status}</div>
@@ -126,6 +128,8 @@ export default function Game() {
         setCurrentMove(nextMove);
     }
 
+
+    // TODO: 5. Display the location for each move in the format (row, col) in the move history list.
     const moves = history.map((squares, move) => {
         let description;
 
@@ -135,6 +139,7 @@ export default function Game() {
             description = "Go to game start";
         }
 
+        // TODO: 1. For the current move only, show “You are at move #…” instead of a button.
         return (
             <li key={move}>
                 <button onClick={() => jumpTo(move)}>{description}</button>
@@ -142,6 +147,7 @@ export default function Game() {
         );
     });
 
+    // TODO: 3. Add a toggle button that lets you sort the moves in either ascending or descending order.
     return (
         <div className="game">
             <div className="game-board">
