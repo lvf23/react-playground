@@ -37,10 +37,13 @@ function Board({ xIsNext, squares, onPlay }) {
     }
 
     const rows = [];
+
     for (let row = 0; row < 3; row++) {
         const rowSquares = [];
+
         for (let col = 0; col < 3; col++) {
             const index = row * 3 + col;
+
             rowSquares.push(
                 <Square
                     key={index}
@@ -49,6 +52,7 @@ function Board({ xIsNext, squares, onPlay }) {
                 />
             );
         }
+
         rows.push(
             <div className="board-row" key={row}>
                 {rowSquares}
