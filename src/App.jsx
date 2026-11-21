@@ -10,8 +10,8 @@ function Square({ value, onSquareClick, className }) {
     );
 }
 
-function Board({ xIsNext, squares, onPlay }) {
-    function handleClick(i) {
+function Board({ xIsNext, squares, onPlay, currentIndex }) {
+    function handleClick(i, row, col) {
         if (squares[i] || calculateWinner(squares)) {
             return;
         }
@@ -24,7 +24,7 @@ function Board({ xIsNext, squares, onPlay }) {
             nextSquares[i] = "O";
         }
 
-        onPlay(nextSquares);
+        onPlay(nextSquares, row, col, nextSquares[i], i);
     }
 
     const winner = calculateWinner(squares);
@@ -47,14 +47,19 @@ function Board({ xIsNext, squares, onPlay }) {
         for (let col = 0; col < 3; col++) {
             const index = row * 3 + col;
 
+            const classNames = [
+                winner && winner.line.includes(index) && "winner",
+                index === currentIndex && "current",
+            ]
+                .filter(Boolean)
+                .join(" ");
+
             rowSquares.push(
                 <Square
-                    className={
-                        winner && winner.line.includes(index) ? "winner" : ""
-                    }
+                    className={classNames}
                     key={index}
                     value={squares[index]}
-                    onSquareClick={() => handleClick(index)}
+                    onSquareClick={() => handleClick(index, row, col)}
                 />
             );
         }
@@ -103,15 +108,25 @@ function calculateWinner(squares) {
 }
 
 export default function Game() {
-    const [history, setHistory] = useState([Array(9).fill(null)]);
+    const [history, setHistory] = useState([
+        {
+            row: -1,
+            col: -1,
+            squares: Array(9).fill(null),
+        },
+    ]);
     const [currentMove, setCurrentMove] = useState(0);
     const [isAscending, setIsAscending] = useState(true);
 
     const xIsNext = currentMove % 2 === 0;
-    const currentSquares = history[currentMove];
+    const currentSquares = history[currentMove] && history[currentMove].squares;
+    const currentIndex = history[currentMove] && history[currentMove].index;
 
-    function handlePlay(nextSquares) {
-        const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+    function handlePlay(nextSquares, row, col, player, index) {
+        const nextHistory = [
+            ...history.slice(0, currentMove + 1),
+            { squares: nextSquares, row, col, player, index },
+        ];
         setHistory(nextHistory);
         setCurrentMove(nextHistory.length - 1);
     }
@@ -120,20 +135,22 @@ export default function Game() {
         setCurrentMove(nextMove);
     }
 
-    // TODO: 5. Display the location for each move in the format (row, col) in the move history list.
-    const moves = history.map((squares, move) => {
+    const moves = history.map((historyItem, move) => {
         let description;
 
         if (move > 0) {
-            description = "Go to move #" + move;
+            description =
+                "Go to move #" +
+                move +
+                ` (${historyItem.row}, ${historyItem.col}) ${historyItem.player}`;
         } else {
             description = "Go to game start";
         }
 
         return (
             <li key={move}>
-                {move === currentMove ? (
-                    `You are at move #${move}`
+                {move && move === currentMove ? (
+                    `You are at move #${move} (${historyItem.row}, ${historyItem.col}) ${historyItem.player}`
                 ) : (
                     <button onClick={() => jumpTo(move)}>{description}</button>
                 )}
@@ -151,6 +168,7 @@ export default function Game() {
                 <Board
                     xIsNext={xIsNext}
                     squares={currentSquares}
+                    currentIndex={currentIndex}
                     onPlay={handlePlay}
                 />
             </div>
