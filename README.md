@@ -57,6 +57,10 @@ Vite will show the local URL to open in your browser.
 - JavaScript
 - CSS
 
+## Changelog and Versioning
+
+This project uses [SemVer](https://semver.org) for versioning. For the versions available, see the [CHANGELOG.md](./CHANGELOG.md).
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
