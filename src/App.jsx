@@ -138,7 +138,6 @@ export default function Game() {
             description = "Go to game start";
         }
 
-        // TODO: 1. For the current move only, show “You are at move #…” instead of a button.
         return (
             <li key={move}>
                 {move === currentMove ? (
