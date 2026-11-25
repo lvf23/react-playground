@@ -1,16 +1,22 @@
 # React Playground
 
-This project implements the tic-tac-toe game from the React tutorial, built with React and Vite. It serves as a hands-on playground for learning React concepts through the game.
+This project implements the tic-tac-toe game from the React tutorial, built with React and Vite. It also demonstrates navigation between pages with React Router, serving as a hands-on playground for learning React concepts.
 
 ## Features
 
 - Alternating turns between players X and O.
 - Win and draw detection.
 - Highlights the winning line and the selected move.
-- Navigable move history showing each move’s player and position.
+- Navigable move history showing each move's player and position.
 - Sorts the move history in ascending or descending order.
+- Navigation between the home page and the tic-tac-toe page.
 
 > Positions use zero-based indices: the top-left square is `(0, 0)`.
+
+## Routes
+
+- `/`: Home page.
+- `/tictactoe`: Tic-tac-toe game.
 
 ## Requirements
 
@@ -45,14 +51,17 @@ Vite will show the local URL to open in your browser.
 
 ## Main project files
 
-- `src/App.jsx`: game components, rules, and move history.
+- `src/App.jsx`: page navigation and route configuration.
+- `src/pages/Home.jsx`: home page component.
+- `src/pages/TicTacToe.jsx`: game components, rules, and move history.
 - `src/styles.css`: board styles and highlights.
-- `src/main.jsx`: initializes the React application.
+- `src/main.jsx`: initializes the React application and configures `BrowserRouter`.
 - `index.html`: HTML page that loads the application.
 
 ## Technologies
 
 - React
+- React Router
 - Vite
 - JavaScript
 - CSS
