@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { Button } from "@/components/ui/button";
+
 function Square({ value, onSquareClick, className }) {
     const classNames = ["square", className].filter((c) => c).join(" ");
 
@@ -152,7 +154,7 @@ function Game() {
                 {move && move === currentMove ? (
                     `You are at move #${move} (${historyItem.row}, ${historyItem.col}) ${historyItem.player}`
                 ) : (
-                    <button onClick={() => jumpTo(move)}>{description}</button>
+                    <Button onClick={() => jumpTo(move)}>{description}</Button>
                 )}
             </li>
         );
