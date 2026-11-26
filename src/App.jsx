@@ -10,7 +10,7 @@ export default function App() {
                 <Link to="/tictactoe">Tic Tac Toe</Link>
             </nav>
 
-            <h1 class="text-3xl font-bold underline">Hello world!</h1>
+            <h1 className="text-3xl font-bold underline">Hello world!</h1>
 
             <Routes>
                 <Route path="/" element={<Home />} />
