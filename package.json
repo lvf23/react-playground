@@ -40,5 +40,12 @@
         "#components/*": "./src/components/*.tsx",
         "#lib/*": "./src/lib/*.ts",
         "#hooks/*": "./src/hooks/*.ts"
+    },
+    "aliases": {
+        "components": "#components",
+        "utils": "#lib/utils",
+        "ui": "#components/ui",
+        "lib": "#lib",
+        "hooks": "#hooks"
     }
 }
